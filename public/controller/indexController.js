@@ -27,7 +27,7 @@ angular.module('moduleIndex', ['ngRoute', 'ngCookies', 'angular-md5'])
 		         });
 
 		}, function(response) {
-			Materialize.toast("Erro ao carregar Uf!", 3000, 'rounded orange accent-4' );
+//			Materialize.toast("Erro ao carregar Uf!", 3000, 'rounded orange accent-4' );
 		});
 	}
 	

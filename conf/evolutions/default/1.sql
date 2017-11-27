@@ -4,12 +4,12 @@
 # --- !Ups
 
 create table pessoa (
-  id                            bigint auto_increment not null,
-  nome                          varchar(255),
-  cpf                           varchar(255),
-  nascimento                    bigint,
+  id                            bigint(11) auto_increment not null,
+  nome                          varchar(45) not null,
+  cpf                           varchar(45) not null,
+  nascimento                    varchar(45),
   peso                          decimal(38),
-  uf                            varchar(255),
+  uf                            varchar(45),
   constraint pk_pessoa primary key (id)
 );
 

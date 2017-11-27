@@ -8,6 +8,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
+import com.avaje.ebean.Ebean;
+
 //import play.db.ebean.Model;
 import com.avaje.ebean.Model;
 
@@ -58,17 +63,22 @@ public class Pessoa extends Model {
 	}
 	
 
-	@Id
+	@Id @GeneratedValue(strategy=GenerationType.AUTO) @Column(name="id", columnDefinition="BIGINT(11)", nullable=false)
 	private Long id;
 	
+	@Column(name="nome", columnDefinition="VARCHAR(45)", nullable=false)
 	private String nome;
 	
+	@Column(name="cpf", columnDefinition="VARCHAR(45)", nullable=false)
 	private String cpf;
 	
+	@Column(name="nascimento", columnDefinition="VARCHAR(45)", nullable=true)
 	private Long nascimento;
 	
+	@Column(name="peso", columnDefinition="DECIMAL", nullable=true)
 	private BigDecimal peso;
 	
+	@Column(name="uf", columnDefinition="VARCHAR(45)", nullable=true)
 	private String uf;
 	
 
