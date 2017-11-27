@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html ng-app="moduleIndex" ng-controller="indexController" >
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 		<link rel="icon" href='/assets/images/favicon.ico'> -->
+		<title>CIM INTEGRA</title>
+
+		<link rel="stylesheet" media="screen" href='@routes.Assets.at("/stylesheets/vendor/materialize.css")'>
+		<link rel="stylesheet" href='@routes.Assets.at("/stylesheets/fonts/material-icons/material-icons.css")'>
+		<link rel="stylesheet" href='@routes.Assets.at("/stylesheets/styleIndex.css")'>
+	</head>
+
+	<body>
+		<nav class=" cyan darken-1" role="navigation">
+		    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Formulário de Cadastro</a>
+		      <ul class="right hide-on-med-and-down">
+		        <li><a href="#">Navbar Link</a></li>
+		      </ul>
+		
+		      <ul id="nav-mobile" class="side-nav">
+		        <li><a href="#">Navbar Link</a></li>
+		      </ul>
+		      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+		    </div>
+	    </nav>
+		<main>
+			<div class="section no-pad-bot" id="index-banner">
+				<div class="container">
+					<br><br>
+					<div class="row">
+					    
+						<div class="col s12 m5">
+							<div class="card-panel">
+								<div class="row">
+							
+									 <div class="progress" ng-show="showloading">
+									     <div class="indeterminate"></div>
+									 </div>
+								
+									<form name="formCadastro">
+										<div class="input-field col s12">
+											<input id="nome" name="nome" type="text" class="validate" ng-model="nome" required>
+											<label for="nome">Nome</label>
+										</div>
+										<div class="input-field col s12">
+											<input id="cpf" name="cpf" type="number" class="validate" ng-model="cpf" required>
+											<label for="cpf">CPF</label>
+										</div>
+										<div class="input-field col s12">
+									      <span class="grey-text">Data de Nascimento</span>
+								          <input placeholder="Placeholder" id="data" type="date" ng-model="nascimento" class="validate">
+								        </div>
+										<div class="input-field col s12">
+											<input id="peso" name="peso" type="number" class="validate" ng-model="peso">
+											<label for="email">Peso</label>
+										</div>
+										<div class="input-field col s12">
+										    <select id="select" ng-model="selectUF">
+												<option ng-repeat="uf in ufList track by uf.name" value="{{uf.name}}">{{uf.name}}</option>
+											</select>
+											<label>UF</label>
+										</div>
+										<div class="col s12 center">
+											<button style="margin:8px" class="btn-large waves-effect waves-light" ng-class="{'disabled':formCadastro.$invalid}" type="submit" name="action"  ng-click="cadastrarPessoa()">
+												Cadastrar
+											</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+						<div class="card-panel col s12 m7">
+								    <table class="striped centered responsive-table">
+								        <thead>
+								          <tr>
+								              <th>Nome</th>
+								              <th>CPF</th>
+								              <th>Nascimento</th>
+								              <th>Peso</th>
+								              <th>UF</th>
+								              <th>Ações<th>
+								          </tr>
+								        </thead>
+								
+								        <tbody>
+								          <tr ng-repeat="pessoa in listaPessoa">
+								            <td>{{pessoa.nome}}</td>
+								            <td>{{pessoa.cpf}}</td>
+								            <td ng-if="pessoa.nascimento == null"> ----- </td>
+								            <td ng-if="pessoa.nascimento != null">{{pessoa.nascimento *1000 | date:'MM/dd/yyyy'}}</td>
+								            <td ng-if="pessoa.peso == null"> ----- </td>
+								            <td ng-if="pessoa.peso != null">{{pessoa.peso}} kg</td>
+								            <td ng-if="pessoa.uf == null"> ----- </td>
+								            <td ng-if="pessoa.uf != null">{{pessoa.uf}}</td>
+								            <td><a ng-click="removerPessoa(pessoa.id)" class="btn-floating sem-float red"> <i class="material-icons">delete</i></a></td>
+								            <td></td>
+								          </tr>
+								        </tbody>
+							      </table>
+							</div>
+						</div>
+					</div>
+					<br><br>
+				</div>
+			</div>
+		</main>
+		<footer class="page-footer cyan darken-2">
+			
+			<div class="footer-copyright">
+				<div class="container">
+					© 2017 Copyright CIMtech
+				</div>
+			</div>
+		</footer>
+
+		<script src="/assets/javascripts/angular.min.js"></script>
+		<script src="/assets/javascripts/angular-route.min.js"></script>
+		<script src="/assets/javascripts/angular-cookies.min.js"></script>
+		<script src="/assets/javascripts/angular-md5.js"></script>
+
+		<script src="/assets/javascripts/jquery-3.2.1.min.js"></script>
+
+		<script src="assets/javascripts/materialize.js"></script>
+
+		<script src="/assets/controller/indexController.js"></script>
+	</body>
+</html>
