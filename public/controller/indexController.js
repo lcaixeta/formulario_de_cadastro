@@ -18,7 +18,7 @@ angular.module('moduleIndex', ['ngRoute', 'ngCookies', 'angular-md5'])
 	findListaPessoas();
 	
 	function findListaUF(){
-		return $http.get('http://www.geonames.org/childrenJSON?geonameId=3469034')
+		return $http.get('https://www.geonames.org/childrenJSON?geonameId=3469034')
 		.then(function(response) {
 				$scope.ufList = response.data.geonames;
 
